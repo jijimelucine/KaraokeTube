@@ -232,11 +232,15 @@ def song_ended():
 def toggle_fullscreen():
     window.toggle_fullscreen()
 
+import os
+
 if __name__ == "__main__":
-    thread = threading.Thread(target=lambda: socketio.run(app, host="0.0.0.0", port=port, allow_unsafe_werkzeug=True ))
-    thread.daemon = True
-    thread.start()
+    port = int(os.environ.get("PORT", 8080))
 
-    window = webview.create_window('KaraokeTube', f'http://127.0.0.1:{port}/tv', fullscreen=False)
-
-    webview.start(gui='qt')
+    # Check if running in a headless environment (like Render or Docker)
+    if os.environ.get("HEADLESS") == "true" or os.environ.get("RENDER"):
+        # Run purely as a web server without launching a desktop GUI window
+        app.run(host="0.0.0.0", port=port)
+    else:
+        # Launch desktop GUI window locally
+        webview.start()
