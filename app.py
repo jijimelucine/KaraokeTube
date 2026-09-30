@@ -65,6 +65,11 @@ def search():
                     'extract_flat': True,
                     'extract_no_playlists': True,
                     # Add cookie file setting to bypass YouTube bot blocks:
+                    'extractor_args': {
+                        'youtube': {
+                        'player_client': ['ios', 'android', 'mweb']
+                        }
+                    },
                     'cookiefile': cookie_path if os.path.exists(cookie_path) else None
                 }
 
