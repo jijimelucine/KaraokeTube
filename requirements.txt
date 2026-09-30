@@ -38,3 +38,4 @@ websockets==12.0
 Werkzeug==3.0.1
 wsproto==1.2.0
 yt-dlp @ https://github.com/yt-dlp/yt-dlp/archive/master.tar.gz
+bgutil-ytdlp-pot-provider
