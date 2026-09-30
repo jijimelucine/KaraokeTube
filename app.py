@@ -58,10 +58,14 @@ def search():
                 num_results = 5
                 yt_search = f'ytsearch{num_results}:"{song} karaoke"'
 
+                cookie_path = '/etc/secrets/cookies.txt' if os.path.exists('/etc/secrets/cookies.txt') else 'cookies.txt'
+
                 ydl_opts = {
                     'format': 'best',
                     'extract_flat': True,
                     'extract_no_playlists': True
+                    # Add cookie file setting to bypass YouTube bot blocks:
+                    'cookiefile': cookie_path if os.path.exists(cookie_path) else None
                 }
 
                 with YoutubeDL(ydl_opts) as ydl:
