@@ -63,7 +63,7 @@ def search():
                 ydl_opts = {
                     'format': 'best',
                     'extract_flat': True,
-                    'extract_no_playlists': True
+                    'extract_no_playlists': True,
                     # Add cookie file setting to bypass YouTube bot blocks:
                     'cookiefile': cookie_path if os.path.exists(cookie_path) else None
                 }
